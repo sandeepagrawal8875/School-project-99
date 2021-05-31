@@ -1,0 +1,74 @@
+{% load i18n %}
+
+{% block content %}
+
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<style>
+.colorgraph {
+  height: 5px;
+  border-top: 0;
+  background: #c4e17f;
+  border-radius: 5px;
+  background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+}
+</style>
+
+
+<div class="container">
+    <div class="row justify-content-center" style="margin:35px;">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            
+                <div class="card card-block border">
+                    <div class="card-header">
+                        <h2>Sign Up</h2>
+                        <hr class="colorgraph">
+                    </div>
+                    <div class="card-body">
+                        <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+                            {% csrf_token %}
+                            <fieldset>
+                            <div class="form-group">
+                                {{ form.as_p }}
+                            </div>
+                            {% if redirect_field_value %}
+                            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                            {% endif %}
+                            <hr class="colorgraph">
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <button class="primaryAction btn btn-lg btn-success btn-block" type="submit">Sign Up</button>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <a href="{{ login_url }}" class="btn btn-lg btn-primary btn-block">Log In</a>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        </form>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+<script>
+    var element = document.getElementById("id_email");
+    element.classList.add("form-control");
+    var userName = document.getElementById("id_username");
+    userName.classList.add("form-control");
+    var pass1 = document.getElementById("id_password1");
+    pass1.classList.add("form-control");
+    var pass2 = document.getElementById("id_password2");
+    pass2.classList.add("form-control");
+</script>
