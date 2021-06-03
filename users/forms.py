@@ -1,12 +1,24 @@
 from django.db import models
 from django.db.models import fields
-from django.forms import ModelForm
-from .models import (Documents,
+from django.forms import ModelForm, forms
+from .models import (Documents, Profile,
                      Student,
                      ParentDetails,
                      ContactDetails,
                      AdditionalDetails)
-from django.forms.widgets import DateInput, FileInput
+from django.forms.widgets import DateInput
+
+
+class SignupForm(ModelForm):
+    
+    class Meta:
+        model = Profile
+        fields = ['phone_number']
+
+    def signup(self, request, user):
+        user.profile.phone_number = self.cleaned_data['phone_number']
+        user.profile.save()
+
 
 
 class StudentFrom(ModelForm):
