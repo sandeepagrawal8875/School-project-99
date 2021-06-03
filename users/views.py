@@ -56,7 +56,6 @@ def RegisterStudent(request):
             admission_Number = studentform.cleaned_data['admission_Number']
             religion = studentform.cleaned_data['religion']
             caste = studentform.cleaned_data['caste']
-            phone = studentform.cleaned_data['phone']
             aadhar = studentform.cleaned_data['aadhar']
             student = Student(
                 user=request.user,
@@ -67,7 +66,6 @@ def RegisterStudent(request):
                 admission_Number=admission_Number,
                 religion=religion,
                 caste=caste,
-                phone=phone,
                 aadhar=aadhar)
             student.save()
         if contactform.is_valid():
