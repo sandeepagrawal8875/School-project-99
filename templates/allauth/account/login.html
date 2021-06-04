@@ -6,8 +6,8 @@
 {% load account socialaccount %}
 {% get_providers as socialaccount_providers %}
 {% block content %}
-
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+{% load static%}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
@@ -23,16 +23,34 @@
   background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
   background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
 }
+
+body{
+    background-image: url('{% static 'img/1.jpg' %}');
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.contact-form {
+	background: rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 10%;
+    padding: 40px;
+    border-radius: 25px;
+    border: 2px solid #73AD21;
+}
+
+
 </style>
 
 
 
-
 <div class="container">
-    <div class="row" style="margin-top:20px">
-        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+    <div class="row justify-content-center" >
+        <div class="col-6 ml-20 contact-form">
             <fieldset>
-                <h2>Log In</h2>
+                <h1 style="text-align: center; color:white;">Log In</h1>
                 <hr class="colorgraph">
                 <form class="login" method="POST" action="">
                     {% csrf_token %}
@@ -60,15 +78,13 @@
                         </div>
                     </div>
                     <span class="button-checkbox">
-                        <input type="checkbox" name="remember_me" id="remember_me" checked="checked" class="hidden">
-                        <a href="{% url 'account_reset_password' %}" class="btn btn-link pull-right">Forgot Password?</a>
+                        <a href="{% url 'account_reset_password' %}" class="btn btn-link pull-right float-right">Forgot Password?</a>
                     </span>
                 </form>
             </fieldset>
         </div>
     </div>
 </div>
-
 {% endblock %}
 
 <script>
